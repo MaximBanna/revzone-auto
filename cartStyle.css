@@ -1,0 +1,285 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* THEME VARIABLES */
+:root {
+    --text: #D7D7D7;
+    --white: #F2F2F2;
+    --muted: rgba(215, 215, 215, 0.65);
+    
+    --stroke: rgba(242, 242, 242, 0.10);
+
+    --shadow-lg: 0 26px 70px rgba(0,0,0,0.62);
+    --shadow-md: 0 16px 42px rgba(0,0,0,0.52);
+
+    --r-lg: 28px;
+    --r-md: 20px;
+    --r-sm: 14px;
+}
+
+/* BODY */
+body {
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    color: var(--text);
+    padding-top: 100px;
+    padding-bottom: 60px;
+
+    background:
+        radial-gradient(900px 520px at 18% 12%, rgba(242, 242, 242, 0.07), transparent 60%),
+        radial-gradient(700px 420px at 82% 18%, rgba(242, 242, 242, 0.05), transparent 58%),
+        linear-gradient(rgba(0,0,0,0.72), rgba(0,0,0,0.84)),
+        url('img/mbg6.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* PAGE CONTAINER */
+.page-container {
+    max-width: 1100px;
+    margin: 26px auto 70px;
+    padding: 30px 26px;
+
+    background: linear-gradient(180deg, rgba(16,16,17,0.60), rgba(10,10,10,0.38));
+    border: 1px solid var(--stroke);
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    position: relative;
+}
+
+/* Internal Decorative Frame */
+.page-container::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border-radius: calc(var(--r-lg) - 10px);
+    border: 1px solid rgba(242, 242, 242, 0.06);
+    pointer-events: none;
+}
+
+/* TITLE */
+.page-container h1 {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 40px;
+    letter-spacing: -0.5px;
+}
+
+.page-container h1::after {
+    content: "";
+    display: block;
+    width: 160px;
+    height: 2px;
+    margin: 14px auto 0;
+    background: linear-gradient(90deg, transparent, rgba(242, 242, 242, 0.65), transparent);
+}
+
+/* CART CARD */
+.cart-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 16px;
+
+    background: linear-gradient(180deg, rgba(18,18,19,0.92), rgba(12,12,13,0.78));
+    border: 1px solid var(--stroke);
+    border-radius: var(--r-md);
+    padding: 18px;
+
+    box-shadow: var(--shadow-md);
+    transition: transform .22s ease, box-shadow .22s ease;
+}
+
+.cart-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 28px 72px rgba(0,0,0,0.70);
+    border-color: rgba(242,242,242,0.20);
+}
+
+/* PRODUCT IMAGE */
+.cart-img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    padding: 8px;
+
+    background: rgba(8,8,9,0.72);
+    border: 1px solid var(--stroke);
+    border-radius: var(--r-sm);
+}
+
+/* INFO */
+.cart-info {
+    flex: 1;
+}
+
+.cart-info h3 {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 4px;
+}
+
+.cart-info p {
+    font-size: 14px;
+    color: var(--muted);
+    font-weight: 600;
+}
+
+/* ACTIONS (QTY & TOTAL) */
+.cart-actions {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+/* Quantity Input Styling */
+.cart-actions input[type="number"] {
+    width: 75px;
+    padding: 10px;
+    border-radius: 999px;
+    border: 1px solid var(--stroke);
+    background: rgba(8, 8, 9, 0.55);
+    color: var(--white);
+    text-align: center;
+    font-weight: 700;
+    font-family: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cart-actions input[type="number"]:focus {
+    outline: none;
+    border-color: rgba(242, 242, 242, 0.3);
+    box-shadow: 0 0 0 4px rgba(242, 242, 242, 0.08);
+}
+
+/* Ensure arrows are clickable on desktop */
+input[type=number]::-webkit-inner-spin-button {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+/* Item total (Calculated) */
+.item-total {
+    min-width: 100px;
+    text-align: right;
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: -0.2px;
+}
+
+/* REMOVE BUTTON */
+.remove-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.remove-x {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: rgba(242, 242, 242, 0.35);
+    font-size: 26px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.remove-x:hover {
+    color: #FF4D4D; 
+    transform: scale(1.2) rotate(90deg);
+}
+
+/* SUMMARY FOOTER */
+.cart-total {
+    margin-top: 40px;
+    text-align: right;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--white);
+border-top: 1px solid transparent;
+border-image: linear-gradient(90deg, transparent, var(--stroke), transparent) 1;
+}
+
+.cart-proceed {
+    margin-top: 24px;
+    text-align: right;
+}
+
+.Proceed-btn {
+    display: inline-block;
+    padding: 16px 48px;
+
+    border-radius: 999px;
+    background: var(--white);
+    color: #0B0B0C;
+    font-weight: 900;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+
+    box-shadow: 0 18px 40px rgba(0,0,0,0.50);
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.Proceed-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 24px 55px rgba(0,0,0,0.65);
+    background: #FFF;
+}
+
+.Proceed-btn:active {
+    transform: translateY(-1px);
+}
+
+/* RESPONSIVE FIXES */
+@media(max-width: 768px) {
+    .page-container {
+        margin: 10px;
+        padding: 20px;
+    }
+
+    .cart-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-top: 40px;
+    }
+
+    .cart-actions {
+        width: 100%;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .item-total {
+        text-align: center;
+        width: 100%;
+    }
+
+    .cart-img {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media(max-width: 480px) {
+    .page-container h1 { font-size: 28px; }
+    .page-container h1::after { width: 100px; }
+    .cart-total { font-size: 24px; }
+    .Proceed-btn { width: 100%; text-align: center; padding: 16px 0; }
+}

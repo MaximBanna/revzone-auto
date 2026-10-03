@@ -1,0 +1,266 @@
+:root {
+  --background-main: #0D0D0D;
+  --accent-platinum: #F2F2F2;
+  --secondary-steel: #4E545C;
+  --text-grey: #D1D1D1;
+  
+  /* Animation specific */
+  --glass: #A5CAD2;
+  --glass-dark: #78A1AB;
+  --road-y: 50%;
+}
+
+/* RESET & BASE */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--background-main);
+  font-family: 'Roboto', Arial, sans-serif;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* SCENE CONTAINER */
+.order {
+  position: relative;
+  flex: 1;
+  width: 100vw;
+}
+
+/* TEXT SPANS */
+.order span.default, 
+.order span.success {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(var(--road-y) - 100px);
+  text-align: center;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--text-grey);
+  transition: opacity 0.3s ease;
+}
+
+.order span.success {
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-platinum);
+}
+
+.order span.success svg {
+  width: 18px;
+  height: 16px;
+  margin-left: 10px;
+  fill: none;
+  stroke: #16BF78;
+  stroke-width: 3;
+  stroke-dasharray: 20px;
+  stroke-dashoffset: 20px;
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+/* TRUCK CONTAINER */
+.order .truck {
+  position: absolute;
+  top: calc(var(--road-y) - 22px);
+  left: 50%;
+  transform: translateX(150px);
+  width: 86px;
+  height: 41px;
+  z-index: 10;
+}
+
+/* REAR DOORS - Hinged top/bottom at the back-left corner */
+.order .truck::before,
+.order .truck::after {
+  content: "";
+  position: absolute;
+  height: 20.5px;
+  width: 2px;
+  left: 0; 
+  background: var(--accent-platinum);
+  z-index: 11;
+}
+
+.order .truck::before {
+  top: 0;
+  transform-origin: top left;
+  transform: rotate(0deg); 
+}
+
+.order .truck::after {
+  bottom: 0;
+  transform-origin: bottom left;
+  transform: rotate(0deg);
+}
+
+/* TRUCK CARGO BOX */
+.order .truck .back {
+  position: absolute;
+  width: 60px;
+  height: 41px;
+  background: linear-gradient(var(--accent-platinum), var(--secondary-steel));
+  border-radius: 2px;
+}
+
+/* TRUCK CABIN */
+.order .truck .front {
+  position: absolute;
+  left: 60px;
+  width: 26px;
+  height: 41px;
+  border-radius: 2px 9px 9px 2px;
+  background: var(--accent-platinum);
+  overflow: hidden;
+}
+
+/* CABIN WINDOW - Curved front, flat back */
+.order .truck .front .window {
+  position: absolute;
+  top: 4px;
+  right: 4px; 
+  width: 12px;
+  height: 33px;
+  background: linear-gradient(135deg, var(--glass) 0%, var(--glass-dark) 50%, var(--glass) 100%);
+  border-radius: 0 7px 7px 0; 
+  overflow: hidden;
+  z-index: 12;
+}
+
+.order .truck .front .window::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
+  transform: rotate(30deg);
+  animation: shimmer 3s infinite linear;
+}
+
+/* THE PACKAGE BOX */
+.order .box {
+  position: absolute;
+  top: calc(var(--road-y) - 10px);
+  left: 50%;
+  transform: translateX(-500px);
+  width: 21px;
+  height: 21px;
+  background: linear-gradient(var(--secondary-steel), #333);
+  border-radius: 2px;
+  z-index: 5;
+}
+
+/* THE DROPPED BUTTON - Positioned UNDER the path */
+.order .dropped-button {
+  position: absolute;
+  top: calc(var(--road-y) + 65px); 
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  opacity: 0;
+  padding: 12px 28px;
+  
+  /* Color Palette Application */
+  background: var(--accent-platinum);
+  color: var(--background-main);
+  border: 1px solid var(--secondary-steel);
+  
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  z-index: 20;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.order .dropped-button:hover {
+  background: var(--secondary-steel);
+  color: var(--accent-platinum);
+  transform: translateX(-50%) translateY(-3px) scale(1.05);
+}
+
+/* ROAD LINES */
+.order .lines {
+  position: absolute;
+  top: var(--road-y);
+  left: -100vw;
+  width: 400vw;
+  height: 6px;
+  background-image: linear-gradient(to right, var(--accent-platinum) 60px, transparent 60px);
+  background-size: 150px 6px;
+  opacity: 0;
+}
+
+/* ANIMATIONS */
+.order.animate .truck { animation: truck 10s ease forwards; }
+.order.animate .truck::before { animation: doorTop 2.5s ease forwards 0.3s; }
+.order.animate .truck::after { animation: doorBottom 2.5s ease forwards 0.3s; }
+.order.animate .box { animation: box 10s ease forwards; }
+.order.animate .lines { animation: lines 10s ease forwards; }
+.order.animate .dropped-button { animation: dropButton 10s ease forwards; }
+
+.order.animate .default { opacity: 0; transition-delay: 1.5s; }
+.order.animate .success { opacity: 1; transition-delay: 7s; }
+.order.animate .success svg { stroke-dashoffset: 0; transition-delay: 7.3s; }
+
+/* KEYFRAMES */
+@keyframes truck {
+  10%, 45% { transform: translateX(-120px); }
+  60% { transform: translateX(-150px); }
+  85%, 100% { transform: translateX(120vw); } 
+}
+
+@keyframes box {
+  0% { transform: translateX(-600px); opacity: 1; }
+  25% { transform: translateX(-105px); opacity: 1; }
+  26%, 100% { transform: translateX(-105px); opacity: 0; }
+}
+
+@keyframes doorTop {
+  25%, 70% { transform: rotate(110deg); }
+  90%, 100% { transform: rotate(0deg); } 
+}
+
+@keyframes doorBottom {
+  25%, 70% { transform: rotate(-110deg); } 
+  90%, 100% { transform: rotate(0deg); }
+}
+
+@keyframes lines {
+  0% { opacity: 0; transform: translateX(0); }
+  30% { opacity: 1; transform: translateX(0); }
+  100% { opacity: 1; transform: translateX(-1500px); }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-150%) rotate(30deg); }
+  30%, 100% { transform: translateX(180%) rotate(30deg); }
+}
+
+@keyframes dropButton {
+  0%, 78% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0);
+  }
+  82% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-20px) scale(1.1);
+  }
+  85%, 100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}

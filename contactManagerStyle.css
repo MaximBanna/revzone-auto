@@ -1,0 +1,148 @@
+  :root{
+    --bg:#0D0D0D; --panel:#121212; --panel2:#0F0F0F;
+    --stroke:#2A2A2A; --stroke2:#333;
+    --text:#D1D1D1; --text2:#9A9A9A;
+    --accent:#F2F2F2; --steel:#4E545C; 
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; font-family: Arial, sans-serif;
+    background: radial-gradient(1200px 400px at 30% -10%, #1a1a1a, transparent 60%) , var(--bg);
+    color:var(--text);
+  }
+  .wrap{ width:min(1200px, calc(100% - 32px)); margin: 56px auto 48px; }
+  .header{ display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:10px; }
+  .header h1{ margin:0; font-size:20px; color:var(--accent); }
+  .header p{ margin:6px 0 0; color:var(--text2); font-size:13px; }
+
+  .layout{ display:grid; grid-template-columns: 380px 1fr; gap:16px; }
+  .card{
+    background: linear-gradient(180deg, #131313, #101010);
+    border:1px solid var(--stroke);
+    border-radius:16px;
+    padding:14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  }
+  .sectionTitle{ display:flex; align-items:center; justify-content:space-between; margin:2px 0 10px; color:var(--accent); font-size:14px; font-weight:700; }
+  .mini{ font-size:12px; color:var(--text2); }
+
+  .tabs{ display:flex; gap:10px; margin-top:6px; }
+  .tab{
+    padding:8px 10px; border-radius:999px; border:1px solid var(--stroke2);
+    background:#0f0f0f; color:var(--text2); text-decoration:none; font-size:12px;
+  }
+  .tab.active{ border-color:var(--steel); color:var(--accent); }
+
+  .ticketList{ display:flex; flex-direction:column; gap:10px; margin-top:10px; }
+  .ticket{
+    padding:12px; border-radius:14px; background:var(--panel2); border:1px solid #242424;
+    cursor:pointer; text-decoration:none; color:inherit; display:block;
+  }
+  .ticket:hover{border-color:var(--steel)}
+  .ticket.active{ border-color:var(--steel); box-shadow:0 0 0 1px rgba(78,84,92,.35) inset; }
+
+  textarea{
+    width:100%; border-radius:12px; border:1px solid var(--stroke2);
+    background:#0f0f0f; color:var(--accent);
+    padding:10px 12px; outline:none;
+    min-height:110px; resize:vertical;
+  }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    border:none; border-radius:12px; padding:10px 12px;
+    background:var(--accent); color:var(--bg);
+    font-weight:800; cursor:pointer;
+  }
+  .btnDanger{
+  background:#120909;
+  border:1px solid #3a1a1a;
+  color:#e6bcbc;
+  font-weight:700;
+  border-radius:12px;
+  padding:10px 14px;
+  cursor:pointer;
+}
+
+/* very subtle hover – not "click me" */
+.btnDanger:hover{
+  background:#140a0a;
+  border-color:#3a1a1a;
+  color:#e6bcbc;
+}
+
+/* no glow, no shadow */
+.btnDanger:active{
+  transform:none;
+  box-shadow:none;
+}
+
+  .btnRow{ display:flex; gap:10px; margin-top:10px; flex-wrap:wrap; }
+
+  .chatHeader{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; padding-bottom:10px; border-bottom:1px solid var(--stroke); }
+  .chatHeader .title{ color:var(--accent); font-weight:800; margin:0; font-size:14px; }
+  .chatHeader .sub{ margin:6px 0 0; font-size:12px; color:var(--text2); }
+  .chatHeader .rightMeta{ display:flex; flex-direction:column; align-items:flex-end; gap:6px; color:var(--text2); font-size:12px; }
+
+  .chatArea{
+  margin-top:12px;
+  margin-bottom:16px;
+  background:var(--panel2);
+  border:1px solid #242424;
+  border-radius:16px;
+  padding:14px;
+  min-height:380px;
+  overflow:auto;
+}
+
+  .transcript{ white-space:pre-wrap; font-size:13px; line-height:1.4; color:var(--accent); }
+
+  .note{
+    margin-top:12px; padding:12px; border-radius:14px;
+    background:#101010; border:1px solid #2a2a2a; color:var(--text2); font-size:13px;
+  }
+  .search{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.search input{
+  width:260px;
+  height:35px;
+  padding:0px 14px;
+  border-radius:999px;
+  border:1px solid var(--stroke2);
+  background:#0f0f0f;
+  color:var(--accent);
+  outline:none;
+}
+
+.search input:focus{
+  border-color:var(--steel);
+  box-shadow:0 0 0 3px rgba(78,84,92,.25);
+}
+.search .btn{
+  height:30px;
+  padding:0 16px;
+  border-radius:999px;
+  font-weight:700;
+}
+
+.search a.btn{
+  text-decoration:none;
+}
+.tabs-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  margin-top:18px;
+  margin-bottom:22px;
+}
+
+.tabs-row .search{
+  margin-left:auto;
+}
+.header > div:first-child{
+  width:100%;
+}

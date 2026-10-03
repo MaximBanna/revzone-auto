@@ -1,0 +1,6 @@
+# Local database settings and private emails.
+# To run the project: copy revZone_DB.example.php to revZone_DB.php and fill it in.
+revZone_DB.php
+
+# Product images uploaded from the admin panel
+img/product_*

@@ -1,0 +1,299 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Page Background */
+body {
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+
+    background:
+        radial-gradient(900px 600px at 15% 10%, rgba(242, 242, 242, 0.07), transparent 60%),
+        radial-gradient(700px 520px at 85% 18%, rgba(242, 242, 242, 0.045), transparent 62%),
+        linear-gradient(135deg, #0D0D0D, #0D0D0D);
+
+    color: #D1D1D1;
+    padding-top: 120px;
+}
+
+/* Login Card */
+form#login {
+    width: 100%;
+    max-width: 420px;
+    padding: 42px 38px;
+    border-radius: 22px;
+
+    background: rgba(13, 13, 13, 0.78);
+    border: 1px solid rgba(78, 84, 92, 0.70);
+    border-left: 5px solid #F2F2F2;
+
+    box-shadow:
+        0 18px 50px rgba(0, 0, 0, 0.70),
+        inset 0 0 0 1px rgba(242, 242, 242, 0.05);
+
+    backdrop-filter: blur(8px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 40px auto 70px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Glow sweep */
+form#login::before {
+    content: "";
+    position: absolute;
+    top: -60%;
+    left: -60%;
+    width: 220%;
+    height: 220%;
+    background: radial-gradient(circle at 30% 30%, rgba(242, 242, 242, 0.12), transparent 55%);
+    transform: rotate(18deg);
+    opacity: 0.55;
+    pointer-events: none;
+}
+
+/* Grid texture */
+form#login::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(rgba(242,242,242,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(242,242,242,0.03) 1px, transparent 1px);
+    background-size: 26px 26px;
+    opacity: 0.18;
+    pointer-events: none;
+    mask-image: radial-gradient(circle at 50% 20%, black 20%, transparent 65%);
+}
+
+/* Title */
+form#login h2 {
+    width: 100%;
+    text-align: left;
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    margin-bottom: 26px;
+    color: #F2F2F2;
+    position: relative;
+    z-index: 2;
+}
+
+form#login h2::after {
+    content: "";
+    display: block;
+    width: 76px;
+    height: 3px;
+    margin-top: 10px;
+    border-radius: 999px;
+    background: rgba(242, 242, 242, 0.75);
+}
+/* Global Message Box (Error/Alert) */
+.msg-box {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 14px;
+    margin-bottom: 24px;
+    
+    background: rgba(224, 108, 117, 0.08); 
+    border: 1px solid rgba(224, 108, 117, 0.35);
+    color: #E06C75;
+    
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: center;
+    
+    position: relative;
+    z-index: 2;
+    animation: alertFade 0.4s ease-out;
+}
+
+/* Auto-hide when there is no text inside */
+.msg-box:empty {
+    display: none;
+}
+
+@keyframes alertFade {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* Inputs */
+.input {
+    width: 100%;
+    margin-bottom: 18px;
+    position: relative;
+    z-index: 2;
+}
+
+.input label {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 12px;
+    letter-spacing: 0.35px;
+    font-weight: 800;
+    color: rgba(209, 209, 209, 0.90);
+    text-transform: uppercase;
+}
+
+.input input {
+    width: 100%;
+    padding: 13px 14px;
+    border-radius: 16px;
+    background: rgba(13, 13, 13, 0.75);
+    border: 1px solid rgba(78, 84, 92, 0.85);
+    color: #F2F2F2;
+    font-size: 15px;
+    font-weight: 600;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.input input::placeholder {
+    color: rgba(209, 209, 209, 0.45);
+}
+
+.input input:focus {
+    outline: none;
+    border-color: rgba(242, 242, 242, 0.90);
+    box-shadow: 0 0 0 4px rgba(242, 242, 242, 0.12);
+    transform: translateY(-1px);
+}
+
+/* Error Messages */
+.error {
+    margin-top: 7px;
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(255, 120, 120, 0.95);
+}
+
+/* Forgot Password ONLY */
+.remember-forgot {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 22px;
+    font-size: 13px;
+    position: relative;
+    z-index: 2;
+}
+
+
+/* Hide remember-me checkbox + label */
+.remember-forgot label {
+    display: none;
+}
+
+.remember-forgot a {
+    color: #F2F2F2;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.remember-forgot a:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* Login Button */
+.login-btn {
+    width: 100%;
+    padding: 13px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(242, 242, 242, 0.85);
+
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 0.4px;
+
+    color: #0D0D0D;
+    background: linear-gradient(180deg, #FFFFFF, #D1D1D1);
+
+    box-shadow:
+        0 18px 35px rgba(0,0,0,0.55),
+        inset 0 1px 0 rgba(255,255,255,0.35);
+
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 2;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 22px 45px rgba(0,0,0,0.65),
+        inset 0 1px 0 rgba(255,255,255,0.45);
+}
+
+.login-btn:active {
+    transform: translateY(0);
+}
+
+/* Signup */
+.SignUp {
+    width: 100%;
+    text-align: center;
+    font-size: 13px;
+    color: rgba(209, 209, 209, 0.75);
+    position: relative;
+    z-index: 2;
+}
+
+.SignUp::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: rgba(78, 84, 92, 0.55);
+    margin: 14px 0 12px;
+}
+
+.SignUp a {
+    color: #F2F2F2;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.SignUp a:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    form#login {
+        max-width: 360px;
+        padding: 36px 26px;
+    }
+
+    form#login h2 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-top: 110px;
+    }
+
+    form#login {
+        width: 92%;
+        padding: 34px 22px;
+    }
+
+    form#login h2 {
+        font-size: 24px;
+    }
+}

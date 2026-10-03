@@ -1,0 +1,156 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800&display=swap');
+:root {
+    --bg-page: #080808;
+    --bg-panel: #0D0D0D;
+    --accent: #F2F2F2;
+    --text-light: #E0E0E0;
+    --text-muted: #888888;
+    --border-color: #262626;
+    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-light);
+    background-color: var(--bg-page);
+    line-height: 1.6;
+    padding-top: 80px; 
+}
+
+/* HERO SECTION - COMPACT VERSION */
+.hero-section {
+    min-height: 55vh;
+    display: flex;
+    align-items: center;
+    background: radial-gradient(circle at 70% 50%, #1a1a1a 0%, #080808 100%);
+    padding: 20px 5%;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    gap: 1.5rem;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.hero-text h1 {
+    font-size: clamp(1.6rem, 4vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    color: #FFFFFF;
+}
+
+.hero-text h1 .thin {
+    font-weight: 300;
+    color: var(--text-muted);
+}
+
+.hero-text p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    max-width: 400px;
+}
+
+/* BUTTON FIX - MODERN LUXURY STYLE */
+.hero-btn {
+    display: inline-block;
+    padding: 0.9rem 2.2rem;
+    font-size: 0.85rem;
+    background-color: var(--accent);
+    color: #000 ;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: var(--transition);
+    border: 1px solid var(--accent);
+}
+
+.hero-btn:hover {
+    background-color: transparent;
+    color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+    letter-spacing: 2px;
+}
+
+/* HERO IMAGE FIX - KEEPS IT IN BOUNDS */
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 30px rgba(0,0,0,0.8));
+}
+
+/* MAIN SECTION */
+.main-section {
+    padding: 20px 5%;
+    background-color: var(--bg-panel);
+    text-align: center;
+}
+
+.container { 
+    max-width: 1100px; 
+    margin: 0 auto; 
+}
+
+.highlight {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* MAIN SECTION IMAGE CENTERED, NATURAL SIZE */
+.main-section .image-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.main-section .image-wrapper img {
+    max-width: 800px;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);    
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+    .hero-section {
+        min-height: 50vh; 
+        padding: 15px 5%;
+    }
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-text p {
+        margin: 0 auto 1rem;
+        margin-bottom: 2rem;
+    }
+    .hero-image img {
+        max-width: 100%;
+    }
+}
